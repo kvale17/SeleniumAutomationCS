@@ -8,7 +8,11 @@ namespace SeleniumCSAutomation.Common
 {
     public class BaseTest : IDisposable
     {
-        internal static IWebDriver Driver { get; private set; } = null!;
+        protected static IWebDriver Driver
+        {
+            get => WebDriverContext.CurrentDriver;
+            private set => WebDriverContext.CurrentDriver = value;
+        }
 
         [AllureBefore("Setup")]
         public BaseTest()

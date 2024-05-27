@@ -4,7 +4,7 @@ namespace SeleniumCSAutomation.Common
 {
     public static class UIMethods
     {
-        private static readonly IWebDriver Driver = BaseTest.Driver;
+        private static IWebDriver Driver => WebDriverContext.CurrentDriver;
 
         public static void AssertText(string cssPath, string expectedText)
         {
