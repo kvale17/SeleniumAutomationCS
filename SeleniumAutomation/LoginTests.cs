@@ -20,7 +20,7 @@ namespace SeleniumCSAutomation
                 Driver.Navigate().GoToUrl("https://practicetestautomation.com/practice-test-login/");
             });
 
-            AllureApi.Step("Enter credentials and click submit", () =>
+            AllureApi.Step("Enter valid credentials and click submit", () =>
             {
                 UIMethods.Type("#username", "student");
                 UIMethods.Type("#password", "Password123");
