@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using OpenQA.Selenium;
+using Xunit;
 using static System.Net.Mime.MediaTypeNames;
 
 namespace SeleniumAutomation.Common

@@ -8,7 +8,7 @@ using Xunit;
 
 namespace SeleniumCSAutomation.Common
 {
-    public class BaseTest : IDisposable
+    public class BaseTest : XunitContextBase
     {
         protected static IWebDriver Driver
         {
@@ -16,21 +16,27 @@ namespace SeleniumCSAutomation.Common
             private set => WebDriverContext.CurrentDriver = value;
         }
 
+        private readonly ITestOutputHelper output;
+
         [AllureBefore("Setup")]
-        public BaseTest()
+        public BaseTest(ITestOutputHelper output)
+            : base(output)
         {
+            this.output = output;
             Driver = new ChromeDriver();
         }
 
         [AllureAfter("Teardown")]
-        public void Dispose()
+        public override void Dispose()
         {
             if (Driver != null)
             {
-                string screenshotFilePath = TestUtils.TakeScreenshot(Driver, "test");
+                string testName = (XunitContext.Context.Test.DisplayName);
+
+                string screenshotFilePath = TestUtils.TakeScreenshot(Driver, testName);
 
                 AllureApi.AddAttachment(
-                    "testTitle.png",
+                    $"{testName}.png",
                     "image/png",
                     File.ReadAllBytes(screenshotFilePath)
                 );
