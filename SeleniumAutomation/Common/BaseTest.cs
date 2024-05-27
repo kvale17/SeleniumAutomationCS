@@ -1,4 +1,5 @@
 ﻿using System;
+using Allure.Xunit.Attributes.Steps;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using Xunit;
@@ -9,13 +10,13 @@ namespace SeleniumCSAutomation.Common
     {
         internal static IWebDriver Driver { get; private set; } = null!;
 
-        //Setup
+        [AllureBefore("Setup")]
         public BaseTest()
         {
             Driver = new ChromeDriver();
         }
 
-        //Teardown
+        [AllureAfter("Teardown")]
         public void Dispose()
         {
             if (Driver != null)

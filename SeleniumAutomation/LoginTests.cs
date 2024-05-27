@@ -1,6 +1,7 @@
 using System.ComponentModel;
 using Allure.Net.Commons;
 using Allure.Xunit.Attributes;
+using Allure.Xunit.Attributes.Steps;
 using SeleniumCSAutomation.Common;
 
 namespace SeleniumCSAutomation
