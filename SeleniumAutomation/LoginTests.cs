@@ -13,7 +13,7 @@ namespace SeleniumCSAutomation
         [AllureDescription("Login with valid credentials and verify successful login")]
         [AllureSeverity(SeverityLevel.critical)]
         [AllureOwner("Kevin Valencia")]
-        public void LoginWithValidCredentials()
+        public void CanLoginWithValidCredentials()
         {
             AllureApi.Step("Go to login page", () =>
             {
