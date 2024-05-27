@@ -8,7 +8,7 @@ namespace SeleniumCSAutomation
     public class LoginTests : BaseTest
     {
         [Fact]
-        [Description("Login with valid credentials and verify successful login")]
+        [AllureDescription("Login with valid credentials and verify successful login")]
         [AllureSeverity(SeverityLevel.critical)]
         [AllureOwner("Kevin Valencia")]
         public void LoginWithValidCredentials()
