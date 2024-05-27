@@ -1,3 +1,4 @@
+using System;
 using System.ComponentModel;
 using Allure.Net.Commons;
 using Allure.Xunit.Attributes;
@@ -14,16 +15,25 @@ namespace SeleniumCSAutomation
         [AllureOwner("Kevin Valencia")]
         public void LoginWithValidCredentials()
         {
-            Driver.Navigate().GoToUrl("https://practicetestautomation.com/practice-test-login/");
+            AllureApi.Step("Go to login page", () =>
+            {
+                Driver.Navigate().GoToUrl("https://practicetestautomation.com/practice-test-login/");
+            });
 
-            UIMethods.Type("#username", "student");
-            UIMethods.Type("#password", "Password123");
+            AllureApi.Step("Enter credentials and click submit", () =>
+            {
+                UIMethods.Type("#username", "student");
+                UIMethods.Type("#password", "Password123");
 
-            UIMethods.Click("#submit");
+                UIMethods.Click("#submit");
+            });
 
-            Assert.Equal("https://practicetestautomation.com/logged-in-successfully/", Driver.Url);
+            AllureApi.Step("Assert url and login success text", () =>
+            {
+                Assert.Equal("https://practicetestautomation.com/logged-in-successfully/", Driver.Url);
 
-            UIMethods.AssertText(".post-title", "Logged In Successfully");
+                UIMethods.AssertText(".post-title", "Logged In Successfully");
+            });
         }
     }
 }
