@@ -1,4 +1,6 @@
 using System.ComponentModel;
+using Allure.Net.Commons;
+using Allure.Xunit.Attributes;
 using SeleniumCSAutomation.Common;
 
 namespace SeleniumCSAutomation
@@ -6,8 +8,9 @@ namespace SeleniumCSAutomation
     public class LoginTests : BaseTest
     {
         [Fact]
-        [Trait("Category", "Smoke")]
-        [DisplayName("Login with valid credentials and verify welcome message")]
+        [Description("Login with valid credentials and verify successful login")]
+        [AllureSeverity(SeverityLevel.critical)]
+        [AllureOwner("Kevin Valencia")]
         public void LoginWithValidCredentials()
         {
             Driver.Navigate().GoToUrl("https://practicetestautomation.com/practice-test-login/");
