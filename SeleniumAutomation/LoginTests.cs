@@ -35,5 +35,32 @@ namespace SeleniumCSAutomation
                 UIMethods.AssertText(".post-title", "Logged In Successfully");
             });
         }
+
+        [Fact]
+        [AllureDescription("Login with invalid credentials and verify failed login")]
+        [AllureSeverity(SeverityLevel.critical)]
+        [AllureOwner("Kevin Valencia")]
+        public void CannotLoginWithInvalidValidCredentials()
+        {
+            AllureApi.Step("Go to login page", () =>
+            {
+                Driver.Navigate().GoToUrl("https://practicetestautomation.com/practice-test-login/");
+            });
+
+            AllureApi.Step("Enter invalid credentials and click submit", () =>
+            {
+                UIMethods.Type("#username", "student");
+                UIMethods.Type("#password", "invalidPassword123");
+
+                UIMethods.Click("#submit");
+            });
+
+            AllureApi.Step("Assert url and login failure text", () =>
+            {
+                Assert.Equal("https://practicetestautomation.com/practice-test-login/", Driver.Url);
+
+                UIMethods.AssertText("#error.show", "Your password is invalid!");
+            });
+        }
     }
 }
