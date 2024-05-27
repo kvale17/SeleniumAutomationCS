@@ -12,9 +12,15 @@ namespace SeleniumAutomation.Common
             ITakesScreenshot screenshotDriver = (ITakesScreenshot)driver;
             Screenshot screenshot = screenshotDriver.GetScreenshot();
 
-            string screenshotFilePath = Path.Combine(
+            string screenshotsFolderPath = Path.Combine(
                 Path.GetFullPath(@"..\..\..\"),
-                "screenshots",
+                "screenshots"
+            );
+
+            Directory.CreateDirectory(screenshotsFolderPath);
+
+            string screenshotFilePath = Path.Combine(
+                screenshotsFolderPath,
                 $"{screenshotName}_{DateTime.Now:yyyyMMdd_HHmmss}.png"
             );
 
