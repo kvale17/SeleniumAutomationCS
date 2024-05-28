@@ -6,23 +6,19 @@ namespace SeleniumAutomation.Common
     {
         private static IWebDriver Driver => WebDriverContext.CurrentDriver;
 
-        public static void AssertText(string cssPath, string expectedText)
+        public static void Type(By locator, string text)
         {
-            string elementText = Driver.FindElement(By.CssSelector(cssPath)).Text;
-
-            Assert.Equal(elementText, expectedText);
+            Driver.FindElement(locator).SendKeys(text);
         }
 
-        public static void Click(string cssPath)
+        public static void Click(By locator)
         {
-            Driver.FindElement(By.CssSelector(cssPath)).Click();
+            Driver.FindElement(locator).Click();
         }
 
-        public static void Type(string cssPath, string text)
+        public static string GetText(By locator)
         {
-            IWebElement element = Driver.FindElement(By.CssSelector(cssPath));
-            element.Clear();
-            element.SendKeys(text);
+            return Driver.FindElement(locator).Text;
         }
     }
 }
