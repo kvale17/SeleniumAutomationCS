@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.DevTools.V123.Audits;
 
 namespace SeleniumAutomation.Common
 {
@@ -14,6 +15,16 @@ namespace SeleniumAutomation.Common
         public static void Click(By locator)
         {
             Driver.FindElement(locator).Click();
+        }
+
+        public static void Click(IWebElement contextElement, By locator)
+        {
+            contextElement.FindElement(locator).Click();
+        }
+
+        public static void Click(Func<string, By> locator, string parameter)
+        {
+            Driver.FindElement(locator(parameter)).Click();
         }
 
         public static string GetText(By locator)
