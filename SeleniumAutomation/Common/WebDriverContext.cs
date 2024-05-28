@@ -1,7 +1,7 @@
 ﻿using System.Threading;
 using OpenQA.Selenium;
 
-namespace SeleniumCSAutomation.Common
+namespace SeleniumAutomation.Common
 {
     public static class WebDriverContext
     {

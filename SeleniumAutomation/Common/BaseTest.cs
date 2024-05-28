@@ -3,10 +3,9 @@ using Allure.Net.Commons;
 using Allure.Xunit.Attributes.Steps;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using SeleniumAutomation.Common;
 using Xunit;
 
-namespace SeleniumCSAutomation.Common
+namespace SeleniumAutomation.Common
 {
     public class BaseTest : XunitContextBase
     {
