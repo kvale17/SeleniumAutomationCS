@@ -30,23 +30,38 @@ namespace SeleniumAutomation.Common
         {
             if (Driver != null)
             {
-                if (XunitContext.Context.TestException != null)
-                {
-                    string testName = (XunitContext.Context.Test.DisplayName);
-
-                    var screenshotFilePath = TestUtils.TakeScreenshot(Driver, testName);
-
-                    AllureApi.AddAttachment(
-                        $"{testName}.png",
-                        "image/png",
-                        File.ReadAllBytes(screenshotFilePath)
-                    );
-                }
-
                 Driver.Quit();
                 Driver.Dispose();
                 GC.SuppressFinalize(this);
             }
+        }
+
+        protected static void Step(string stepName, Action action)
+        {
+            AllureApi.Step(
+                stepName,
+                () =>
+                {
+                    try
+                    {
+                        action();
+                    }
+                    catch (Exception ex)
+                    {
+                        string testName = (XunitContext.Context.Test.DisplayName);
+
+                        string screenshotFilePath = TestUtils.TakeScreenshot(Driver, testName);
+
+                        AllureApi.AddAttachment(
+                            $"{testName}.png",
+                            "image/png",
+                            File.ReadAllBytes(screenshotFilePath)
+                        );
+
+                        throw new Exception("Step failed {" + ex + "}");
+                    }
+                }
+            );
         }
     }
 }

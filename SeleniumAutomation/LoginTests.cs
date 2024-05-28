@@ -1,9 +1,9 @@
 using System;
-using System.ComponentModel;
 using Allure.Net.Commons;
 using Allure.Xunit.Attributes;
-using Allure.Xunit.Attributes.Steps;
+using OpenQA.Selenium;
 using SeleniumAutomation.Common;
+using Xunit;
 using Xunit.Abstractions;
 
 namespace SeleniumAutomation
@@ -19,7 +19,7 @@ namespace SeleniumAutomation
         [AllureOwner("Kevin Valencia")]
         public void CanLoginWithValidCredentials()
         {
-            AllureApi.Step(
+            Step(
                 "Go to login page",
                 () =>
                 {
@@ -29,18 +29,17 @@ namespace SeleniumAutomation
                 }
             );
 
-            AllureApi.Step(
+            Step(
                 "Enter valid credentials and click submit",
                 () =>
                 {
                     UIMethods.Type("#username", "student");
                     UIMethods.Type("#password", "Password123");
-
                     UIMethods.Click("#submit");
                 }
             );
 
-            AllureApi.Step(
+            Step(
                 "Assert url and login success text",
                 () =>
                 {
@@ -48,7 +47,6 @@ namespace SeleniumAutomation
                         "https://practicetestautomation.com/logged-in-successfully/",
                         Driver.Url
                     );
-
                     UIMethods.AssertText(".post-title", "Logged In Successfully");
                 }
             );
@@ -60,9 +58,7 @@ namespace SeleniumAutomation
         [AllureOwner("Kevin Valencia")]
         public void CannotLoginWithInvalidValidCredentials()
         {
-            AllureApi.Step(
-                "Go to login page",
-                () =>
+            Step("Go to login page", () =>
                 {
                     Driver
                         .Navigate()
@@ -70,26 +66,20 @@ namespace SeleniumAutomation
                 }
             );
 
-            AllureApi.Step(
-                "Enter invalid credentials and click submit",
-                () =>
+            Step("Enter invalid credentials and click submit",() =>
                 {
                     UIMethods.Type("#username", "student");
                     UIMethods.Type("#password", "invalidPassword123");
-
                     UIMethods.Click("#submit");
                 }
             );
 
-            AllureApi.Step(
-                "Assert url and login failure text",
-                () =>
+            Step("Assert url and login failure text", () =>
                 {
                     Assert.Equal(
                         "https://practicetestautomation.com/practice-test-login/",
                         Driver.Url
                     );
-
                     UIMethods.AssertText("#error.show", "Your password is invalid!");
                 }
             );
