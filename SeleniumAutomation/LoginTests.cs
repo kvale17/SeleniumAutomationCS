@@ -19,9 +19,7 @@ namespace SeleniumAutomation
         [AllureOwner("Kevin Valencia")]
         public void CanLoginWithValidCredentials()
         {
-            Task(
-                "Go to login page",
-                () =>
+            Task("Go to login page", () =>
                 {
                     Driver
                         .Navigate()
@@ -29,9 +27,7 @@ namespace SeleniumAutomation
                 }
             );
 
-            Task(
-                "Enter valid credentials and click submit",
-                () =>
+            Task("Enter valid credentials and click submit", () =>
                 {
                     UIMethods.Type("#username", "student");
                     UIMethods.Type("#password", "Password123");
@@ -39,9 +35,7 @@ namespace SeleniumAutomation
                 }
             );
 
-            Task(
-                "Assert url and login success text",
-                () =>
+            Task("Assert url and login success text", () =>
                 {
                     Assert.Equal(
                         "https://practicetestautomation.com/logged-in-successfully/",
@@ -66,7 +60,7 @@ namespace SeleniumAutomation
                 }
             );
 
-            Task("Enter invalid credentials and click submit",() =>
+            Task("Enter invalid credentials and click submit", () =>
                 {
                     UIMethods.Type("#username", "student");
                     UIMethods.Type("#password", "invalidPassword123");
