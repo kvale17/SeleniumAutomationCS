@@ -36,10 +36,10 @@ namespace SeleniumAutomation.Common
             }
         }
 
-        protected static void Step(string stepName, Action action)
+        protected static void Task(string taskName, Action action)
         {
             AllureApi.Step(
-                stepName,
+                taskName,
                 () =>
                 {
                     try
@@ -58,7 +58,7 @@ namespace SeleniumAutomation.Common
                             File.ReadAllBytes(screenshotFilePath)
                         );
 
-                        throw new Exception("Step failed {" + ex + "}");
+                        throw new Exception("Task failed {" + ex + "}");
                     }
                 }
             );

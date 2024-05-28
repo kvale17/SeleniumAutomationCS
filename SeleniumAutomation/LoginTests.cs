@@ -19,7 +19,7 @@ namespace SeleniumAutomation
         [AllureOwner("Kevin Valencia")]
         public void CanLoginWithValidCredentials()
         {
-            Step(
+            Task(
                 "Go to login page",
                 () =>
                 {
@@ -29,7 +29,7 @@ namespace SeleniumAutomation
                 }
             );
 
-            Step(
+            Task(
                 "Enter valid credentials and click submit",
                 () =>
                 {
@@ -39,7 +39,7 @@ namespace SeleniumAutomation
                 }
             );
 
-            Step(
+            Task(
                 "Assert url and login success text",
                 () =>
                 {
@@ -58,7 +58,7 @@ namespace SeleniumAutomation
         [AllureOwner("Kevin Valencia")]
         public void CannotLoginWithInvalidValidCredentials()
         {
-            Step("Go to login page", () =>
+            Task("Go to login page", () =>
                 {
                     Driver
                         .Navigate()
@@ -66,7 +66,7 @@ namespace SeleniumAutomation
                 }
             );
 
-            Step("Enter invalid credentials and click submit",() =>
+            Task("Enter invalid credentials and click submit",() =>
                 {
                     UIMethods.Type("#username", "student");
                     UIMethods.Type("#password", "invalidPassword123");
@@ -74,7 +74,7 @@ namespace SeleniumAutomation
                 }
             );
 
-            Step("Assert url and login failure text", () =>
+            Task("Assert url and login failure text", () =>
                 {
                     Assert.Equal(
                         "https://practicetestautomation.com/practice-test-login/",
