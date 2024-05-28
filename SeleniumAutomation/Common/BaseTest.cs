@@ -30,15 +30,18 @@ namespace SeleniumAutomation.Common
         {
             if (Driver != null)
             {
-                string testName = (XunitContext.Context.Test.DisplayName);
+                if (XunitContext.Context.TestException != null)
+                {
+                    string testName = (XunitContext.Context.Test.DisplayName);
 
-                string screenshotFilePath = TestUtils.TakeScreenshot(Driver, testName);
+                    var screenshotFilePath = TestUtils.TakeScreenshot(Driver, testName);
 
-                AllureApi.AddAttachment(
-                    $"{testName}.png",
-                    "image/png",
-                    File.ReadAllBytes(screenshotFilePath)
-                );
+                    AllureApi.AddAttachment(
+                        $"{testName}.png",
+                        "image/png",
+                        File.ReadAllBytes(screenshotFilePath)
+                    );
+                }
 
                 Driver.Quit();
                 Driver.Dispose();
