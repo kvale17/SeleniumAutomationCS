@@ -1,11 +1,7 @@
-using System;
 using Allure.Net.Commons;
 using Allure.Xunit.Attributes;
-using OpenQA.Selenium;
 using SeleniumAutomation.Common;
 using SeleniumAutomation.PageObjects;
-using Xunit;
-using Xunit.Abstractions;
 
 namespace SeleniumAutomation.UITests;
 
@@ -20,17 +16,13 @@ public class LoginTests : BaseTest
     [AllureOwner("Kevin Valencia")]
     public void CanLoginWithValidCredentials()
     {
-        Task(
-            "Go to login page",
-            () =>
+        Task("Go to login page", () =>
             {
                 LoginPage.GoToLoginPage();
             }
         );
 
-        Task(
-            "Enter valid credentials and click submit",
-            () =>
+        Task("Enter valid credentials and click submit", () =>
             {
                 LoginPage.EnterUsername("student");
                 LoginPage.EnterPassword("Password123");
@@ -38,9 +30,7 @@ public class LoginTests : BaseTest
             }
         );
 
-        Task(
-            "Assert url and login success text",
-            () =>
+        Task("Assert url and login success text", () =>
             {
                 Assert.Equal(
                     "https://practicetestautomation.com/logged-in-successfully/",
@@ -57,17 +47,13 @@ public class LoginTests : BaseTest
     [AllureOwner("Kevin Valencia")]
     public void CannotLoginWithInvalidValidCredentials()
     {
-        Task(
-            "Go to login page",
-            () =>
+        Task("Go to login page", () =>
             {
                 LoginPage.GoToLoginPage();
             }
         );
 
-        Task(
-            "Enter invalid credentials and click submit",
-            () =>
+        Task("Enter invalid credentials and click submit", () =>
             {
                 LoginPage.EnterUsername("student");
                 LoginPage.EnterPassword("invalidPassword123");
@@ -75,9 +61,7 @@ public class LoginTests : BaseTest
             }
         );
 
-        Task(
-            "Assert url and login failure text",
-            () =>
+        Task("Assert url and login failure text", () =>
             {
                 Assert.Equal("https://practicetestautomation.com/practice-test-login/", Driver.Url);
                 Assert.Equal("Your password is invalid!", LoginPage.GetErrorMessage());
