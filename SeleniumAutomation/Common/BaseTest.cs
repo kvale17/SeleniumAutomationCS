@@ -1,9 +1,7 @@
-﻿using System;
-using Allure.Net.Commons;
+﻿using Allure.Net.Commons;
 using Allure.Xunit.Attributes.Steps;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
-using Xunit;
 
 namespace SeleniumAutomation.Common
 {

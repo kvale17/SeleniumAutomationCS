@@ -1,5 +1,4 @@
 ﻿using OpenQA.Selenium;
-using OpenQA.Selenium.DevTools.V123.Audits;
 
 namespace SeleniumAutomation.Common
 {
