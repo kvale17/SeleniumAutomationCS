@@ -17,6 +17,11 @@ namespace SeleniumAutomation.Common
             Driver.FindElement(locator).Click();
         }
 
+        public static void Click(IWebElement element)
+        {
+            element.Click();
+        }
+
         public static void Click(IWebElement contextElement, By locator)
         {
             contextElement.FindElement(locator).Click();
