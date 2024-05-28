@@ -31,5 +31,10 @@ namespace SeleniumAutomation.Common
         {
             return Driver.FindElement(locator).Text;
         }
+
+        public static string GetText(IWebElement element)
+        {
+            return element.Text;
+        }
     }
 }
