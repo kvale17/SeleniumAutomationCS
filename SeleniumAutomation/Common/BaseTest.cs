@@ -36,10 +36,10 @@ namespace SeleniumAutomation.Common
             }
         }
 
-        protected static void Task(string taskName, Action action)
+        protected static void Task(string taskDescription, Action action)
         {
             AllureApi.Step(
-                taskName,
+                taskDescription,
                 () =>
                 {
                     try
