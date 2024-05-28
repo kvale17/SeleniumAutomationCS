@@ -6,7 +6,7 @@ using SeleniumAutomation.Common;
 using Xunit;
 using Xunit.Abstractions;
 
-namespace SeleniumAutomation
+namespace SeleniumAutomation.UITests
 {
     public class LoginTests : BaseTest
     {
