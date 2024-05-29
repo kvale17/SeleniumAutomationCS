@@ -28,8 +28,8 @@ namespace SeleniumAutomation.PageObjects
         private static By ProductOptionLocator(string optionLabel) =>
             By.XPath($"//div[@option-label='{optionLabel}']");
 
-        private static By MenuItem(string text) =>
-            By.XPath($"//*[@role='menuitem' and contains(.,'{text}')]");
+        private static By MenuItemLocator(string text) =>
+            By.XPath($".//*[@role='menuitem' and contains(.,'{text}')]");
 
         public static void AddProductToCart(string name, string size, string color)
         {
@@ -60,23 +60,15 @@ namespace SeleniumAutomation.PageObjects
         {
             var actions = new OpenQA.Selenium.Interactions.Actions(Driver);
 
-            IWebElement menCategoryContainer = Driver.FindElement(
-                By.XPath($"//*[contains(@class, 'category-item') and contains(., 'Men')]")
+            IWebElement genderContainer = Driver.FindElement(
+                By.XPath($"//*[contains(@class, 'category-item') and contains(., '{gender}')]")
             );
 
-            actions.MoveToElement(Driver.FindElement(MenuItem(gender))).Perform();
+            actions.MoveToElement(genderContainer.FindElement(MenuItemLocator(gender))).Perform();
 
-            IWebElement? categoryMenuItem = Driver
-                .FindElements(MenuItem(category))
-                .FirstOrDefault(e => e.Displayed);
+            actions.MoveToElement(genderContainer.FindElement(MenuItemLocator(category))).Perform();
 
-            actions.MoveToElement(categoryMenuItem).Perform();
-
-            IWebElement? typeMenuItem = Driver
-                .FindElements(MenuItem(type))
-                .FirstOrDefault(e => e.Displayed);
-
-            actions.Click(typeMenuItem).Perform();
+            actions.Click(genderContainer.FindElement(MenuItemLocator(type))).Perform();
         }
 
         public static void AssertProductInCart(string name)
