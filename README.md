@@ -1,4 +1,4 @@
-# SeleniumAutomationC#
+# Selenium Automation in C# with Allure Reporting
 
 ## Setup
 1. Clone repository ``https://github.com/kvale17/SeleniumAutomationCS.git``
