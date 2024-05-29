@@ -1,4 +1,5 @@
 ﻿using OpenQA.Selenium;
+using OpenQA.Selenium.Interactions;
 
 namespace SeleniumAutomation.Common
 {
@@ -39,6 +40,19 @@ namespace SeleniumAutomation.Common
         public static string GetText(IWebElement element)
         {
             return element.Text;
+        }
+
+        public static void Hover(IWebElement element)
+        {
+            var actions = new Actions(Driver);
+            actions.MoveToElement(element).Perform();
+        }
+
+        public static void Hover(IWebElement contextElement, By locator)
+        {
+            IWebElement element = contextElement.FindElement(locator);
+            var actions = new Actions(Driver);
+            actions.MoveToElement(element).Perform();
         }
     }
 }

@@ -38,9 +38,6 @@ namespace SeleniumAutomation.PageObjects
             UIMethods.Click(productContainer, ProductOptionLocator(size));
             UIMethods.Click(productContainer, ProductOptionLocator(color));
 
-            var actions = new OpenQA.Selenium.Interactions.Actions(Driver);
-            actions.MoveToElement(Driver.FindElement(ProductOptionLocator(size))).Perform();
-
             UIMethods.Click(productContainer, addToCartButton);
 
             var wait = new WebDriverWait(Driver, TimeSpan.FromSeconds(5));
@@ -58,17 +55,15 @@ namespace SeleniumAutomation.PageObjects
 
         public static void GoToCatalogSection(string gender, string category, string type)
         {
-            var actions = new OpenQA.Selenium.Interactions.Actions(Driver);
-
             IWebElement genderContainer = Driver.FindElement(
                 By.XPath($"//*[contains(@class, 'category-item') and contains(., '{gender}')]")
             );
 
-            actions.MoveToElement(genderContainer.FindElement(MenuItemLocator(gender))).Perform();
+            UIMethods.Hover(genderContainer);
 
-            actions.MoveToElement(genderContainer.FindElement(MenuItemLocator(category))).Perform();
+            UIMethods.Hover(genderContainer, MenuItemLocator(category));
 
-            actions.Click(genderContainer.FindElement(MenuItemLocator(type))).Perform();
+            UIMethods.Click(genderContainer, MenuItemLocator(type));
         }
 
         public static void AssertProductInCart(string name)
