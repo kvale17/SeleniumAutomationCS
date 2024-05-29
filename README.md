@@ -1,4 +1,13 @@
-# Selenium Automation in C# with Allure Reporting
+# Selenium Automation 
+
+### Automatin Project Created With
+- Selenium WebDriver
+- xUnit
+- C#
+- .Net
+- Visual Studio IDE
+- Allure
+
 
 ## Setup
 1. Clone repository ``https://github.com/kvale17/SeleniumAutomationCS.git``
