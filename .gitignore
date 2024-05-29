@@ -8,6 +8,9 @@ allure-results
 allure-report
 screenshots
 
+#Karate
+KarateTests/target
+
 # User-specific files
 *.rsuser
 *.suo
