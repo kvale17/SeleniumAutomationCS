@@ -7,7 +7,7 @@
 - .Net
 - Visual Studio IDE
 - Allure
--Karate
+- Karate
 
 ## Setup
 1. Clone repository ``https://github.com/kvale17/SeleniumAutomationCS.git``
