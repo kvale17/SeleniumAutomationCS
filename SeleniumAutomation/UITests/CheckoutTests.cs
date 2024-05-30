@@ -11,7 +11,7 @@ public class CheckoutTests : BaseTest
         : base(output) { }
 
     [Fact]
-    [AllureDescription("Login with invalid credentials and verify failed login")]
+    [AllureDescription("Add a product to the cart")]
     [AllureSeverity(SeverityLevel.critical)]
     [AllureOwner("Kevin Valencia")]
     public void CanAddProductToCart()
