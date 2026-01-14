@@ -1,6 +1,6 @@
 # Selenium Automation 
 
-### Automatin Project Created With
+### Automation Project Created With
 - Selenium WebDriver
 - xUnit
 - C#
